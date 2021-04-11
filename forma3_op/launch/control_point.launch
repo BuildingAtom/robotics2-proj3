@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="x" default="2"/>
+    <arg name="y" default="2"/>
+    <arg name="yaw" default="0.0"/>
+
+    <arg name="teleop" default="false"/>
+
+    <!-- run everything in the namespace -->
+    <group ns="controller">
+        <param name="rate" type="double" value="20"/>
+        <node name="control_point" pkg="forma3_op" type="control_point.py"
+              args="$(arg x) $(arg y) $(arg yaw)"/>
+
+        <group if="$(arg teleop)">
+            <node name="simple_twist_controller" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py"
+                  output="screen" required="true" launch-prefix="bash -c 'sleep 5.0; $0 $@'">
+            </node>
+        </group>
+    </group>
+</launch>

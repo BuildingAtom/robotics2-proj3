@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<launch>
+
+    <!-- bounds -->
+    <arg name="xmin" default="0.2"/>
+    <arg name="ymin" default="0.2"/>
+    <arg name="xmax" default="9.8"/>
+    <arg name="ymax" default="9.8"/>
+    <param name="/map/bounds" type="yaml" value="[$(arg xmin), $(arg ymin), $(arg xmax), $(arg ymax)]"/>
+
+    <!-- spawn distances -->
+    <param name="min_spawn_dist" type="double" value=".5"/>
+    <param name="max_spawn_dist" type="double" value="3"/>
+
+    <!-- launcher parameters -->
+    <param name="robot_spawner_pkg" value="forma3_op"/>
+    <param name="robot_spawner_file" value="spawn_robot.launch"/>
+    <param name="robot_control_pkg" value="formation_controller"/>
+    <param name="robot_control_file" value="independent_controller.launch"/>
+    <param name="robot_ss_file" value="extract_control_ss.launch"/>
+
+    <!-- initial formation target location -->
+    <arg name="x" default="2.5"/>
+    <arg name="y" default="2.5"/>
+    <arg name="yaw" default="0"/>
+
+    <!-- is it platoon -->
+    <arg name="platoon" default="false"/>
+    <param name="is_platoon" type="boolean" value="$(arg platoon)"/>
+
+    <!-- robot description file -->
+    <arg name="graphname" default="open_triangle.xml"/>
+    <arg name="graphfile" default="$(find forma3_op)/graphs/$(arg graphname)"/>
+
+    <node name="spawn_graph" pkg="forma3_op" type="spawn_graph.py" output="screen"
+          args="$(arg graphfile) $(arg x) $(arg y) $(arg yaw)"/>
+</launch>

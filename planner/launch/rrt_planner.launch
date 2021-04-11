@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="x" default="8"/>
+    <arg name="y" default="8"/>
+
+    <param name="/map/configuration_map" type="string" value="$(find maru2_map)/saved_maps/configuration_space/room.pgm" />
+    <param name="/map/free_space_map" type="string" value="$(find maru2_map)/saved_maps/free_space/room.pgm" />
+    <param name="/map/voxel_size" type="double" value="0.05" />
+
+    <param name="rrt_max_length" type="double" value="0.50" />
+
+    <param name="local_motion_package" type="string" value="local_motion"/>
+    <param name="local_motion_exe" type="string" value="bug2.py"/>
+    <param name="local_motion_extra_args" type="string" value=""/>
+    <param name="local_motion_eval" type="string" value="eval_length.py"/>
+
+    <node name="rrt_planner" pkg="global_planner" type="rrt_planner.py" output="screen"
+          args="$(arg x) $(arg y)" cwd="node" required="true"/>
+
+    <!-- <group if="$(arg eval)">
+        <node name="wavefront_eval" pkg="local_motion" type="eval_length.py" output="screen" cwd="node"/>
+    </group> -->
+</launch>

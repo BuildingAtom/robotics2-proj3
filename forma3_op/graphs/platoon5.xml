@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<graph option="independent">
+    <node name="robot1" type="root"/>
+    <node name="robot2" type="follow_graph"/>
+    <node name="robot3" type="follow_graph"/>
+    <node name="robot4" type="follow_graph"/>
+    <node name="robot5" type="follow_graph"/>
+    <edge source="robot1" dest="robot2" type="undirected">
+        <dist value="0.5"/>
+    </edge>
+    <edge source="robot2" dest="robot3" type="undirected">
+        <dist value="0.5"/>
+    </edge>
+    <edge source="robot3" dest="robot4" type="undirected">
+        <dist value="0.5"/>
+    </edge>
+    <edge source="robot4" dest="robot5" type="undirected">
+        <dist value="0.5"/>
+    </edge>
+</graph>

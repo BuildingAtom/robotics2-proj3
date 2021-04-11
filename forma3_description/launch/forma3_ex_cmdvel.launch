@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="forma3_ns" default="robot"/>
+
+    <arg name="rate" default="20"/>
+    <arg name="forward_cov" default="0.2"/>
+    <arg name="left_cov" default="0.2"/>
+
+    <group ns="$(arg forma3_ns)">
+        <param name="controller/drive_rate" type="double" value="$(arg rate)"/>
+        <param name="controller/forward_left_var" type="yaml" value="[$(arg forward_cov), $(arg left_cov)]"/>
+
+        <node name="drive_twist_middleman" pkg="forma3_description" type="drive_twist_middleman.py"/>
+    </group>
+</launch>

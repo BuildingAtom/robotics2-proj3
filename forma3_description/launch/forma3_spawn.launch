@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- robot namespace, generally same as robot name -->
+    <arg name="forma3_ns" default="robot"/>
+
+    <!-- robot description file -->
+    <arg name="robotfile" default="$(find forma3_description)/urdf/forma3.urdf"/>
+
+    <!-- initial position arguments -->
+    <arg name="x" default="0.45"/>
+    <arg name="y" default="2"/>
+    <arg name="yaw" default="0"/>
+
+    <!-- initial position noise arguments -->
+    <arg name="xdev" default="0.00"/>
+    <arg name="ydev" default="0.00"/>
+    <arg name="yawdev" default="0.00"/>
+
+    <!-- bounds -->
+    <arg name="xmin" default="0.2"/>
+    <arg name="ymin" default="0.2"/>
+    <arg name="xmax" default="9.8"/>
+    <arg name="ymax" default="9.8"/>
+
+    <!-- robot name -->
+    <arg name="robotname" default="robot"/>
+
+    <!-- run everything in the namespace -->
+    <group ns="$(arg forma3_ns)">
+        <!-- robot definition -->
+        <param name="robot_description" textfile="$(find forma3_description)/urdf/forma3.urdf" />
+
+        <!-- initial position noise -->
+        <param name="spawn_stddev_gauss" type="yaml" value="[$(arg xdev), $(arg ydev), $(arg yawdev)]"/>
+
+        <!-- valid bounds -->
+        <param name="spawn_bounds" type="yaml" value="[$(arg xmin), $(arg ymin), $(arg xmax), $(arg ymax)]"/>
+
+        <!-- robot name -->
+        <param name="robot_name" type="string" value="$(arg robotname)"/>
+
+        <!-- spawn the model -->
+        <node name="robot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+              args="-urdf -param robot_description -model $(arg robotname)"/>
+        <!-- move to the specific position -->
+        <node name="robot_move_spawn" pkg="forma3_description" type="move_pos.py"
+              args="$(arg x) $(arg y) $(arg yaw)"/>
+    </group>
+</launch>

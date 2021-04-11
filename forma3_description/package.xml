@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>forma3_description</name>
+  <version>0.0.0</version>
+  <description>The forma3_description package, describing and providing all components needed to simulate a simple node holonomic robot.</description>
+  <maintainer email="lia4@rpi.edu">Adam Li</maintainer>
+
+  <license>TODO</license>
+
+  <!-- Dependencies -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>forma3_gazebo</exec_depend>
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <build_depend>std_msgs</build_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+
+  <export>
+    <!-- -->
+  </export>
+</package>

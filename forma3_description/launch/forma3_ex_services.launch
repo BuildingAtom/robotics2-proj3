@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="forma3_ns" default="robot"/>
+    <group ns="$(arg forma3_ns)">
+        <!-- nothing special needed for get_dist or get_pose -->
+        <node name="post_dist_serv" pkg="forma3_description" type="pose_dist_serv.py"/>
+    </group>
+</launch>

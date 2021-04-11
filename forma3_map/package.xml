@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>forma3_map</name>
+  <version>0.0.0</version>
+  <description>Map used for forma3.</description>
+  <maintainer email="lia4@rpi.edu">Adam Li</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+    <!--  -->
+  </export>
+</package>

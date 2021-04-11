@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<!-- independent or central, for each robot having it's own independent controller, or for a centralized controller to give directions to each robot -->
+<!-- only independent control available -->
+<graph option="independent">
+    <!-- node marks a node, name is the name of the robot for ros -->
+    <!-- three types, root, follow_plan, and follow_graph. there is always one root node required -->
+    <!-- follow_plan will know both the target centroid and the information provided by neighbors on the graph -->
+    <!-- root will always operate under follow_plan. -->
+    <!-- follow_graph will only know the information provided by neighbors -->
+    <node name="robot1" type="root"/>
+    <node name="robot2" type="follow_plan"/>
+    <node name="robot3" type="follow_plan"/>
+    <!-- then edge describes the information flow, and whether it is directed or not -->
+    <!-- elements of edge are then dist, theta, and orient for distance, theta, and orientation -->
+    <!-- these define the coupling of the nodes -->
+    <edge source="robot1" dest="robot2" type="undirected">
+        <!-- relative distance -->
+        <dist value="0.5"/>
+        <!-- angle the robot should have from source to dest based on source frame (30deg) -->
+        <theta value="-0.523599"/>
+        <!-- relative rotation of the robot -->
+        <orient value="0"/>
+    </edge>
+    <edge source="robot1" dest="robot3" type="undirected">
+        <!-- pose also works for it all -->
+        <pose x="0.433012" y="0.25" theta="0"/>
+    </edge>
+    <edge source="robot2" dest="robot3" type="undirected">
+        <!-- relative distance -->
+        <dist value="0.5"/>
+        <theta value="1.570796"/>
+        <orient value="0"/>
+    </edge>
+</graph>

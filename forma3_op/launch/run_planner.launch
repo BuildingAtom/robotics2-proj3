@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="platoon" default="false"/>
+    <arg name="graphname" default="open_triangle.xml"/>
+    <arg name="launch_base" default="false"/>
+    <arg name="x" default="8"/>
+    <arg name="y" default="8"/>
+
+    <group if="$(arg launch_base)">
+        <include file="$(find forma3_op)/launch/base.launch"/>
+    </group>
+    <include file="$(find forma3_op)/launch/spawn_graph.launch">
+        <arg name="platoon" value="$(arg platoon)"/>
+        <arg name="graphname" value="$(arg graphname)"/>
+    </include>
+    <include file="$(find planner)/launch/prm_planner.launch">
+        <arg name="x" value="$(arg x)"/>
+        <arg name="y" value="$(arg x)"/>
+        <arg name="ctrl_topic" value="/controller/control_point"/>
+        <arg name="feedback" default="/formation/root" if="$(arg platoon)"/>
+        <arg name="feedback" default="/formation/centroid" unless="$(arg platoon)"/>
+    </include>
+</launch>

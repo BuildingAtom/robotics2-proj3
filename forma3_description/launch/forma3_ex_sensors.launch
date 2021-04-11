@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="forma3_ns" default="robot"/>
+    <group ns="$(arg forma3_ns)">
+        <!-- nothing special needed for proximity -->
+        <node name="proximity_middleman" pkg="forma3_description" type="proximity_middleman.py"/>
+    </group>
+</launch>

@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<graph option="independent">
+    <node name="robot1" type="root"/>
+    <node name="robot2" type="follow_plan"/>
+    <node name="robot3" type="follow_plan"/>
+    <node name="robot4" type="follow_plan"/>
+    <node name="robot5" type="follow_plan"/>
+    <node name="robot6" type="follow_plan"/>
+    <node name="robot7" type="follow_plan"/>
+    <node name="robot8" type="follow_plan"/>
+    <node name="robot9" type="follow_plan"/>
+    <edge source="robot1" dest="robot2" type="undirected">
+        <dist value="0.7"/>
+        <theta value="3.14159"/>
+        <orient value="0"/>
+    </edge>
+    <edge source="robot2" dest="robot3" type="undirected">
+        <dist value="0.7"/>
+        <theta value="3.14159"/>
+        <orient value="0"/>
+    </edge>
+    <edge source="robot2" dest="robot4" type="undirected">
+        <dist value="0.5"/>
+        <theta value="-1.5708"/>
+        <orient value="0"/>
+    </edge>
+    <edge source="robot4" dest="robot5" type="undirected">
+        <dist value="0.5"/>
+        <theta value="-1.5708"/>
+        <orient value="0"/>
+    </edge>
+    <edge source="robot3" dest="robot6" type="undirected">
+        <dist value="1"/>
+        <theta value="-1.5708"/>
+        <orient value="0"/>
+    </edge>
+    <edge source="robot5" dest="robot6" type="undirected">
+        <dist value="0.7"/>
+        <theta value="3.14159"/>
+        <orient value="0"/>
+    </edge>
+    <edge source="robot6" dest="robot7" type="undirected">
+        <dist value="0.8"/>
+        <theta value="-1.5708"/>
+        <orient value="0"/>
+    </edge>
+    <edge source="robot7" dest="robot8" type="undirected">
+        <dist value="0.6"/>
+        <theta value="0"/>
+        <orient value="0"/>
+    </edge>
+    <edge source="robot8" dest="robot9" type="undirected">
+        <dist value="0.8"/>
+        <theta value="0"/>
+        <orient value="0"/>
+    </edge>
+</graph>

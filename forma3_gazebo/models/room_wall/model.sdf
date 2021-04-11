@@ -1,0 +1,67 @@
+<?xml version='1.0'?>
+<sdf version='1.7'>
+  <model name='room_wall'>
+    <!-- disable dynamics -->
+    <static>true</static>
+    <allow_auto_disable>1</allow_auto_disable>
+
+    <!-- create physical object -->
+    <link name='wall'>
+      <!-- any physical properties or relations, no inertial as it should be immovable -->
+      <gravity>1</gravity>
+      <enable_wind>0</enable_wind>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <pose>0 0 0 0 -0 0</pose>
+
+      <!-- collision box definition -->
+      <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>10 0.5 4</size>
+          </box>
+        </geometry>
+        <surface>
+          <!-- make it basically impossible to move after collision -->
+          <friction>
+            <ode>
+              <mu>100</mu>
+              <mu2>100</mu2>
+            </ode>
+            <torsional>
+              <coefficient>100</coefficient>
+            </torsional>
+          </friction>
+          <!-- no bounce (default values) -->
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <!-- default contact values used -->
+        </surface>
+      </collision>
+
+      <!-- visual definition of the wall -->
+      <visual name='visual'>
+        <cast_shadows>1</cast_shadows>
+        <transparency>0</transparency>
+        <pose>0 0 0 0 -0 0</pose>
+        <material>
+          <ambient>1 0.5 0 1</ambient>
+          <diffuse>1 0.5 0 1</diffuse>
+          <specular>1 1 1 0.5</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+        <geometry>
+          <box>
+            <size>10 0.5 4</size>
+          </box>
+        </geometry>
+      </visual>
+      
+    </link>
+  </model>
+</sdf>

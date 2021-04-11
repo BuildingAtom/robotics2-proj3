@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="platoon" default="false"/>
+    <arg name="graphname" default="open_triangle.xml"/>
+    <arg name="launch_base" default="false"/>
+
+    <group if="$(arg launch_base)">
+        <include file="$(find forma3_op)/launch/base.launch"/>
+    </group>
+    <include file="$(find forma3_op)/launch/spawn_graph.launch">
+        <arg name="platoon" value="$(arg platoon)"/>
+        <arg name="graphname" value="$(arg graphname)"/>
+    </include>
+    <include file="$(find forma3_op)/launch/control_point.launch">
+        <arg name="teleop" value="true"/>
+    </include>
+</launch>

@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="robotname" default="forma3"/>
+    <arg name="graphfile" default="$(find forma3_op)/graphs/open_triangle.xml"/>
+    <arg name="controltype" default="follow_plan"/>
+
+    <!-- run everything in the namespace -->
+    <group ns="formation/$(arg robotname)">
+        <!-- all the different gains -->
+        <param name="gain_environment" type="double" value="1.5"/>
+        <param name="gain_graph" type="double" value="2.5"/>
+        <param name="gain_graph_barrier" type="double" value="0.5"/>
+        <param name="gain_rotation" type="double" value="1.2"/>
+        <param name="gain_centroid" type="double" value=".5"/>
+        <param name="gain_barrier" type="double" value="0.8"/>
+
+        <!-- control barrier parameters -->
+        <param name="barrier_dist_strong" type="double" value="0.4"/>
+        <param name="barrier_dist_environment" type="double" value="0.5"/>
+        <param name="barrier_dist_graph" type="double" value="1.1"/>
+
+        <!-- feasible movement limits -->
+        <param name="move_speed_limit" type="double" value="2"/>
+        <param name="move_rot_limit" type="double" value="3"/>
+
+        <!-- controller parameters -->
+        <param name="controller_rate" type="double" value="60"/>
+        <param name="robot_name" type="string" value="$(arg robotname)"/>
+        <param name="control_point" type="string" value="/formation/control_point_correction"/>
+
+        <node name="independent_controller" pkg="formation_controller" type="independent_controller.py"
+              output="screen" args="$(arg graphfile) $(arg controltype)"/>
+    </group>
+</launch>

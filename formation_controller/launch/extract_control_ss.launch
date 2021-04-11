@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="graphfile" default="$(find forma3_op)/graphs/open_triangle.xml"/>
+
+    <!-- initial formation target location -->
+    <arg name="x" default="2.5"/>
+    <arg name="y" default="2.5"/>
+    <arg name="yaw" default="0"/>
+
+    <arg name="is_platoon" default="false"/>
+
+    <!-- run everything in the namespace -->
+    <group ns="formation">
+        <!-- controller parameters -->
+        <param name="correction_gain" type="double" value="3"/>
+        <param name="controller_rate" type="double" value="20"/>
+        <param name="control_point_echo" type="string" value="/formation/centroid"/>
+        <param name="root_echo" type="string" value="/formation/root"/>
+        <param name="control_point_correction" type="string" value="/formation/control_point_correction"/>
+        <param name="control_point" type="string" value="/controller/control_point"/>
+        <param name="platoon" type="boolean" value="$(arg is_platoon)"/>
+
+        <node name="extract_control_ss" pkg="formation_controller" type="extract_control_ss.py"
+              output="screen" args="$(arg graphfile) $(arg x) $(arg y) $(arg yaw)"/>
+    </group>
+</launch>

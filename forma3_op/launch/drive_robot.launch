@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="robotname" default="forma3"/>
+    <!-- launch the robot controller -->
+    <include file="$(find forma3_description)/launch/forma3_ex_drive.launch">
+        <arg name="forma3_ns" value="$(arg robotname)"/>
+    </include>
+</launch>

@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<launch>
+    <!-- configuration map -->
+    <param name="/map/configuration_map" type="string" value="$(find forma3_map)/saved_maps/configuration_space/room.pgm" />
+    <param name="/map/voxel_size" type="double" value="0.05" />
+    <!-- This file sets up and launches the core components for the simulation of the robot -->
+    <include file="$(find forma3_gazebo)/launch/room_headless.launch"/>
+    <!-- Spawn a seperate gzclient to view -->
+
+</launch>

@@ -1,0 +1,51 @@
+<?xml version='1.0'?>
+<sdf version='1.7'>
+  <model name='cabinet_shelf'>
+    <!-- disable dynamics -->
+    <static>true</static>
+    <allow_auto_disable>1</allow_auto_disable>
+
+    <!-- create physical object -->
+    <link name='cabinet_shelf'>
+
+      <!-- collision box definition -->
+      <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <geometry>
+          <box>
+            <size>1.5 2 2</size>
+          </box>
+        </geometry>
+        <surface>
+          <!-- make it basically impossible to move after collision -->
+          <friction>
+            <ode>
+              <mu>100</mu>
+              <mu2>100</mu2>
+            </ode>
+            <torsional>
+              <coefficient>100</coefficient>
+            </torsional>
+          </friction>
+          <!-- no bounce and default collision values -->
+        </surface>
+      </collision>
+
+      <!-- visual definition of the wall -->
+      <visual name='visual'>
+        <material>
+          <ambient>1 0.8 0.8 1</ambient>
+          <diffuse>1 0.8 0.8 1</diffuse>
+          <specular>1 1 1 0.5</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+        <geometry>
+          <box>
+            <size>1.5 2 2</size>
+          </box>
+        </geometry>
+      </visual>
+
+    </link>
+  </model>
+</sdf>

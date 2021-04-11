@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<sdf version='1.7'>
+  <world name='room'>
+
+    <!-- get the default ground plane and define a light source (the sun) -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+      <pose>8 1 10 0 -0 0</pose>
+    </include>
+
+    <!-- Build the room -->
+    <model name='room_wall_right'>
+      <include>
+        <uri>model://room_wall</uri>
+      </include>
+      <pose>5 -0.25 2 0 -0 0</pose>
+    </model>
+    <model name='room_wall_top'>
+      <include>
+        <uri>model://room_wall</uri>
+      </include>
+      <pose>10.25 5 2 0 -0 1.5708</pose>
+    </model>
+    <model name='room_wall_left'>
+      <include>
+        <uri>model://room_wall</uri>
+      </include>
+      <pose>5 10.25 2 0 -0 0</pose>
+    </model>
+    <model name='room_wall_bottom'>
+      <include>
+        <uri>model://room_wall</uri>
+      </include>
+      <pose>-0.25 5 2 0 -0 1.5708</pose>
+    </model>
+
+    <model name='desk_1'>
+      <include>
+        <uri>model://desk</uri>
+      </include>
+      <pose>5 5 0.45 0 -0 0</pose>
+    </model>
+    <model name='desk_2'>
+      <include>
+        <uri>model://desk</uri>
+      </include>
+      <pose>2 8 0.45 0 -0 1.5708</pose>
+    </model>
+
+    <model name='seat_1'>
+      <include>
+        <uri>model://seat</uri>
+      </include>
+      <pose>4.2 4.2 0.2 0 -0 0</pose>
+    </model>
+    <model name='seat_2'>
+      <include>
+        <uri>model://seat</uri>
+      </include>
+      <pose>4.2 5.8 0.2 0 -0 0</pose>
+    </model>
+    <model name='seat_3'>
+      <include>
+        <uri>model://seat</uri>
+      </include>
+      <pose>2 7 0.2 0 -0 0</pose>
+    </model>
+
+    <model name='cabinet_shelf_1'>
+      <include>
+        <uri>model://cabinet_shelf</uri>
+      </include>
+      <pose>9.5 8 1 0 -0 0</pose>
+    </model>
+    <model name='cabinet_shelf_2'>
+      <include>
+        <uri>model://cabinet_shelf</uri>
+      </include>
+      <pose>9.5 1 1 0 -0 0</pose>
+    </model>
+    <model name='cabinet_shelf_3'>
+      <include>
+        <uri>model://cabinet_shelf</uri>
+      </include>
+      <pose>4 0.5 1 0 -0 1.5708</pose>
+    </model>
+    <model name='cabinet_shelf_deep'>
+      <include>
+        <uri>model://cabinet_shelf_deep</uri>
+      </include>
+      <pose>6 0.5 1 0 -0 1.5708</pose>
+    </model>
+
+    <model name='support_column'>
+      <include>
+        <uri>model://support_column</uri>
+      </include>
+      <pose>8 5 0.75 0 -0 0</pose>
+    </model>
+
+    <!-- setup camera to top down view of room -->
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>5 5 25 0 1.570796 0</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

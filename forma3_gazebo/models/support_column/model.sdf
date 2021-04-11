@@ -1,0 +1,53 @@
+<?xml version='1.0'?>
+<sdf version='1.7'>
+  <model name='support_column'>
+    <!-- disable dynamics -->
+    <static>true</static>
+    <allow_auto_disable>1</allow_auto_disable>
+
+    <!-- create physical object -->
+    <link name='support_column'>
+
+      <!-- collision box definition -->
+      <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <geometry>
+          <cylinder>
+            <radius>0.5</radius>
+            <length>1.5</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <!-- make it basically impossible to move after collision -->
+          <friction>
+            <ode>
+              <mu>100</mu>
+              <mu2>100</mu2>
+            </ode>
+            <torsional>
+              <coefficient>100</coefficient>
+            </torsional>
+          </friction>
+          <!-- no bounce and default collision values -->
+        </surface>
+      </collision>
+
+      <!-- visual definition of the wall -->
+      <visual name='visual'>
+        <material>
+          <ambient>0.5 1 0.5 1</ambient>
+          <diffuse>0.5 1 0.5 1</diffuse>
+          <specular>1 1 1 0.5</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+        <geometry>
+          <cylinder>
+            <radius>0.5</radius>
+            <length>1.5</length>
+          </cylinder>
+        </geometry>
+      </visual>
+
+    </link>
+  </model>
+</sdf>
